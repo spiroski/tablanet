@@ -1,0 +1,7 @@
+.playerColumn { /* stylelint-ignore */
+    text-align: center;
+}
+
+.playerColumn:nth-child(2){ /* stylelint-ignore */
+    border-left: 1px solid black;
+}

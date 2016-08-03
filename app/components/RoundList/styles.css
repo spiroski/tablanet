@@ -1,0 +1,8 @@
+.roundList {
+    /* stylelint-ignore */
+    text-align: left;
+    font-size: 1.5em;
+}
+.roundListOdd {
+    text-align: right;
+}

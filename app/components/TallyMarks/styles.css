@@ -1,0 +1,10 @@
+.tallyMarks { /* stylelint-ignore */
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.groupOfFive { /* stylelint-ignore */
+	text-decoration: line-through;;
+	margin: 0;
+}

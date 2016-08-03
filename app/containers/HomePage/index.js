@@ -10,16 +10,45 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+import { connect } from 'react-redux';
+import ScoreBoard from 'components/ScoreBoard';
+import NewRoundInput from 'containers/NewRoundInput';
 
-export default class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+import { addMark, addRound, changeName } from 'containers/App/actions';
+
+import { selectPlayers } from 'containers/App/selectors';
+
+import { createStructuredSelector } from 'reselect';
+
+export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
+    let player1 = this.props.players.get(0).toJS();
+    let player2 = this.props.players.get(1).toJS();
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-    );
+      <div>
+        <ScoreBoard player1={player1} player2={player2} onAddMark={this.props.onAddMark} onAddRound={this.props.onAddRound} onChangeName={this.props.onChangeName} />
+        <NewRoundInput onAddRound={this.props.onAddRound} />
+      </div>
+        );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onAddMark: (playerID) => dispatch(addMark(playerID)),
+    onAddRound: (round) => dispatch(addRound(round)),
+    onChangeName: (playerID, name) => dispatch(changeName(playerID, name)),
+  };
+}
+
+const mapStateToProps = createStructuredSelector({ players: selectPlayers() });
+
+HomePage.propTypes = {
+  players: React.PropTypes.any.isRequired,
+  onAddMark: React.PropTypes.func.isRequired,
+  onAddRound: React.PropTypes.func.isRequired,
+  onChangeName: React.PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

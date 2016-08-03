@@ -7,6 +7,8 @@ import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import globalReducer from 'containers/App/reducer';
+import newRoundInputReducer from 'containers/NewRoundInput/reducer';
 
 /*
  * routeReducer
@@ -26,7 +28,7 @@ const routeInitialState = fromJS({
  */
 function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
-    /* istanbul ignore next */
+        /* istanbul ignore next */
     case LOCATION_CHANGE:
       return state.merge({
         locationBeforeTransitions: action.payload,
@@ -42,7 +44,9 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
+    global: globalReducer,
     language: languageProviderReducer,
+    newRoundInput: newRoundInputReducer,
     ...asyncReducers,
   });
 }

@@ -1,4 +1,5 @@
-// selectLocationState expects a plain JS object for the routing state
+import { createSelector } from 'reselect';
+
 const selectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
@@ -15,6 +16,15 @@ const selectLocationState = () => {
   };
 };
 
+const selectGlobal = () => (state) => state.get('global');
+
+const selectPlayers = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('players')
+);
+
 export {
   selectLocationState,
+  selectGlobal,
+  selectPlayers,
 };
