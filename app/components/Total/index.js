@@ -13,7 +13,6 @@ function Total(props) {
   let roundTotal = props.rounds.reduce((round, total) => round + total, 0);
   let marks = props.marks;
   const odd = (props.odd !== undefined);
-  console.log(odd);
 
   const roundTotalContent = (
     <Col xs={4} className={odd ? 'text-right' : 'text-left'}>

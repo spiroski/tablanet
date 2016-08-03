@@ -1,14 +1,14 @@
-.scoreBoard { /* stylelint-ignore */
-	width: 100%;
-	margin-bottom: 300px;
+.scoreBoard {
+  width: 100%;
+  margin-bottom: 300px;
 }
 
-.scoreBoard:after {
-    content:"";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    border-left: 1px solid lightgray;
+.scoreBoard::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid lightgray;
 }
