@@ -12,16 +12,17 @@ import { Row, Col } from 'react-bootstrap';
 function Total(props) {
   let roundTotal = props.rounds.reduce((round, total) => round + total, 0);
   let marks = props.marks;
-  const odd = props.odd;
+  const odd = (props.odd !== undefined);
+  console.log(odd);
 
   const roundTotalContent = (
-    <Col xs={4} className="text-left">
+    <Col xs={4} className={odd ? 'text-right' : 'text-left'}>
       {roundTotal}
     </Col>
   );
 
   const marksContent = (
-    <Col xs={4} className="text-right">{marks}</Col>
+    <Col xs={4} className={odd ? 'text-left' : 'text-right'}>{marks}</Col>
   );
 
   const plusSign = (

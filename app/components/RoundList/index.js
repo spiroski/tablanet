@@ -1,3 +1,4 @@
+/* eslint prefer-template: "off"*/
 import React from 'react';
 
 import styles from './styles.css';
@@ -7,8 +8,8 @@ function RoundList(props) {
   const rounds = props.rounds;
   const odd = props.odd;
   let className = odd
-    ? styles.roundList
-    : '{styles.roundList} {styles.roundListOdd}';
+    ? styles.roundList + ' ' + styles.roundListOdd
+    : styles.roundList;
   return (
     <div className={className}>
       {rounds.map((round, index) => <Round round={round} key={index} />)}
