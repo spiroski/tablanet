@@ -17,7 +17,7 @@ function Round(props) {
 }
 
 Round.propTypes = {
-  round: React.PropTypes.any.required,
+  round: React.PropTypes.any.isRequired,
 };
 
 export default Round;

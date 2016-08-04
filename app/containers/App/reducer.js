@@ -11,6 +11,7 @@
  */
 
 import {
+  NEW_GAME,
   ADD_MARK,
   ADD_ROUND,
   CHANGE_NAME,
@@ -38,6 +39,8 @@ const initialState = fromJS({
 function playerReducer(state, action) {
   let score = 0;
   switch (action.type) {
+    case NEW_GAME:
+      return state.setIn(['marks'], 0).setIn(['rounds'], fromJS([]));
     case ADD_MARK:
       if (state.get('id') !== action.playerID) {
         return state;
@@ -62,6 +65,7 @@ function playerReducer(state, action) {
 
 function playersReducer(state, action) {
   switch (action.type) {
+    case NEW_GAME:
     case ADD_MARK:
     case ADD_ROUND:
     case CHANGE_NAME:
@@ -74,6 +78,7 @@ function playersReducer(state, action) {
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
+    case NEW_GAME:
     case ADD_MARK:
     case ADD_ROUND:
     case CHANGE_NAME:

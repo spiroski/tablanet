@@ -1,3 +1,27 @@
 .total {
   text-align: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.total div {
+  width: 33.33%;
+  display: inline-block;
+}
+
+.column {
+  width: 33.33%;
+  display: inline-block;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
 }

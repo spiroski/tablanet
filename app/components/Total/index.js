@@ -7,35 +7,31 @@
 import React from 'react';
 
 import styles from './styles.css';
-import { Row, Col } from 'react-bootstrap';
-
 function Total(props) {
   let roundTotal = props.rounds.reduce((round, total) => round + total, 0);
   let marks = props.marks;
   const odd = (props.odd !== undefined);
 
-  const roundTotalContent = (
-    <Col xs={4} className={odd ? 'text-right' : 'text-left'}>
+  const roundTotalContent = key => (
+    <div className={odd ? styles.textRight : styles.textLeft} key={key}>
       {roundTotal}
-    </Col>
+    </div>
   );
 
-  const marksContent = (
-    <Col xs={4} className={odd ? 'text-left' : 'text-right'}>{marks}</Col>
+  const marksContent = key => (
+    <div className={odd ? styles.textLeft : styles.textRight} key={key}>{marks}</div>
   );
 
-  const plusSign = (
-    <Col xs={4}>+</Col>
+  const plusSign = key => (
+    <div key={key}>+</div>
   );
 
-  const subTotalContent = [roundTotalContent, plusSign, marksContent];
+  const subTotalContent = [roundTotalContent(0), plusSign(1), marksContent(2)];
 
   return (
     <div className={styles.total}>
       <hr />
-      <Row>
       {odd ? subTotalContent.reverse() : subTotalContent}
-      </Row>
       <hr />
       <h3>{roundTotal + marks}</h3>
     </div>

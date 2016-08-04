@@ -5,13 +5,15 @@
 */
 
 import React from 'react';
-import { Button, Glyphicon } from 'react-bootstrap/';
+import IconButton from 'material-ui/IconButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import styles from './styles.css';
 
 function TallyMarks(props) {
   const marks = props.marks;
   const numberOfGroups = parseInt(marks / 5, 10);
+
   let groups = [];
   for (let i = 0; i < numberOfGroups; i++) {
     groups.push(
@@ -25,10 +27,23 @@ function TallyMarks(props) {
 
   return (
     <div className={styles.tallyMarks}>
-      <Button bsSize="lg" onClick={() => props.onAddMark()}>
-        <Glyphicon glyph="plus" />
-      </Button>
-      <br /> {groups}
+      <div>
+        <IconButton
+          style={{
+            width: 60,
+            height: 60,
+            padding: 0,
+          }}
+          iconStyle={{
+            width: 48,
+            height: 48,
+          }}
+          onClick={() => props.onAddMark()}
+        >
+          <ContentAdd />
+        </IconButton>
+      </div>
+      {groups}
       {leftOverMarks}
     </div>
   );

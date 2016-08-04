@@ -17,32 +17,30 @@ function Score(props) {
   const player = props.player;
   let odd = player.id % 2;
 
-  const roundListColumn = (
-    <Col xs={6}>
+  const roundListColumn = key => (
+    <div key={key}>
       <RoundList rounds={player.rounds} odd={odd} />
-    </Col>
+    </div>
   );
 
-  const tallyMarksColumn = (
-    <Col xs={6}>
+  const tallyMarksColumn = key => (
+    <div key={key}>
       <TallyMarks marks={player.marks} onAddMark={() => props.onAddMark(player.id)} />
-    </Col>
+    </div>
   );
 
   let content = [];
   if (odd) {
-    content.push(tallyMarksColumn);
-    content.push(roundListColumn);
+    content.push(tallyMarksColumn(0));
+    content.push(roundListColumn(1));
   } else {
-    content.push(roundListColumn);
-    content.push(tallyMarksColumn);
+    content.push(roundListColumn(0));
+    content.push(tallyMarksColumn(1));
   }
 
   return (
     <div className={styles.score}>
-      <Row>
-        {content}
-      </Row>
+      {content}
     </div>
   );
 }

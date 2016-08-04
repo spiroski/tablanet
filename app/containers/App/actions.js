@@ -16,6 +16,7 @@
  */
 
 import {
+  NEW_GAME,
   ADD_MARK,
   ADD_ROUND,
   CHANGE_NAME,
@@ -26,6 +27,13 @@ import {
  *
  * @return {object} An action object with a type of LOAD_REPOS
  */
+
+export function newGame() {
+  return {
+    type: NEW_GAME,
+  };
+}
+
 export function addMark(playerID) {
   return {
     type: ADD_MARK,

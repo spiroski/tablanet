@@ -18,9 +18,7 @@ class PlayerColumn extends React.Component { // eslint-disable-line react/prefer
     return (
       <div className={styles.playerColumn}>
         <PlayerName
-          name={player.name} onChangeName={name => {
-            this.props.onChangeName(player.id, name);
-          }}
+          name={player.name} playerID={player.id} onChangeName={this.props.onChangeName}
         />
         <Score player={player} onAddMark={this.props.onAddMark} />
       </div>

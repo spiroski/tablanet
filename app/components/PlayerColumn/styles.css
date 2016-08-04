@@ -1,5 +1,7 @@
 .playerColumn {
   text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .playerColumn:nth-child(2) {

@@ -12,6 +12,7 @@ function RoundList(props) {
     : styles.roundList;
   return (
     <div className={className}>
+      {rounds.length === 0 ? <Round round={0} /> : ''}
       {rounds.map((round, index) => <Round round={round} key={index} />)}
     </div>
   );

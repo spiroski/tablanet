@@ -11,31 +11,27 @@ import styles from './styles.css';
 import PlayerColumn from 'components/PlayerColumn';
 import Total from 'components/Total';
 
-import { Grid, Row, Col } from 'react-bootstrap/lib';
-
 class ScoreBoard extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
       <div className={styles.scoreBoard}>
-        <Grid>
-          <Row>
-            <Col xs={6}>
-              < PlayerColumn player={this.props.player1} onAddMark={this.props.onAddMark} onChangeName={this.props.onChangeName} />
-            </Col>
-            <Col xs={6}>
-              < PlayerColumn player={this.props.player2} onAddMark={this.props.onAddMark} onChangeName={this.props.onChangeName} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={6}>
-              <Total rounds={this.props.player1.rounds} marks={this.props.player1.marks} />
-            </Col>
-            <Col xs={6}>
-              <Total rounds={this.props.player2.rounds} marks={this.props.player2.marks} odd />
-            </Col>
-          </Row>
-        </Grid>
+        <div>
+          <div className={styles.column}>
+            < PlayerColumn player={this.props.player1} onAddMark={this.props.onAddMark} onChangeName={this.props.onChangeName} />
+          </div>
+          <div className={styles.column}>
+            < PlayerColumn player={this.props.player2} onAddMark={this.props.onAddMark} onChangeName={this.props.onChangeName} />
+          </div>
+        </div>
+        <div>
+          <div className={styles.column}>
+            <Total rounds={this.props.player1.rounds} marks={this.props.player1.marks} />
+          </div>
+          <div className={styles.column}>
+            <Total rounds={this.props.player2.rounds} marks={this.props.player2.marks} odd />
+          </div>
+        </div>
       </div>
     );
   }
