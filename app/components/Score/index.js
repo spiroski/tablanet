@@ -10,9 +10,6 @@ import styles from './styles.css';
 import RoundList from 'components/RoundList';
 import TallyMarks from 'components/TallyMarks';
 
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-
 function Score(props) {
   const player = props.player;
   let odd = player.id % 2;
@@ -47,6 +44,7 @@ function Score(props) {
 
 Score.propTypes = {
   onAddMark: React.PropTypes.func.isRequired,
+  player: React.PropTypes.any.isRequired,
 };
 
 export default Score;
