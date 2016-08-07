@@ -13,6 +13,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 
 import ContentUndo from 'material-ui/svg-icons/content/undo';
+import ContentRedo from 'material-ui/svg-icons/content/redo';
 import NavigationRefresh from 'material-ui/svg-icons/navigation/refresh';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
@@ -34,7 +35,18 @@ function TopAppBar(props) {
             targetOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
           >
-            <MenuItem primaryText="Undo" leftIcon={<ContentUndo />} />
+            <MenuItem
+              primaryText="Undo"
+              leftIcon={<ContentUndo />}
+              onClick={props.onUndo}
+              disabled={! props.canUndo}
+            />
+            <MenuItem
+              primaryText="Redo"
+              leftIcon={<ContentRedo />}
+              onClick={props.onRedo}
+              disabled={! props.canRedo}
+            />
             <Divider />
             <MenuItem primaryText="New Game" leftIcon={<NavigationRefresh />} onClick={props.onNewGame} />
           </IconMenu>
@@ -46,6 +58,10 @@ function TopAppBar(props) {
 
 TopAppBar.propTypes = {
   onNewGame: React.PropTypes.func.isRequired,
+  onUndo: React.PropTypes.func.isRequired,
+  onRedo: React.PropTypes.func.isRequired,
+  canUndo: React.PropTypes.bool.isRequired,
+  canRedo: React.PropTypes.bool.isRequired,
 };
 
 export default TopAppBar;

@@ -10,6 +10,8 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import globalReducer from 'containers/App/reducer';
 import newRoundInputReducer from 'containers/NewRoundInput/reducer';
 
+import undoable from 'redux-undo';
+
 /*
  * routeReducer
  *
@@ -44,7 +46,9 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
-    global: globalReducer,
+    global: undoable(globalReducer, {
+      filter: (action) => action.isUndoable === true,
+    }),
     language: languageProviderReducer,
     newRoundInput: newRoundInputReducer,
     ...asyncReducers,

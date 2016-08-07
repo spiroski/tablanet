@@ -37,6 +37,7 @@ export function newGame() {
 export function addMark(playerID) {
   return {
     type: ADD_MARK,
+    isUndoable: true,
     playerID,
   };
 }
@@ -44,6 +45,7 @@ export function addMark(playerID) {
 export function addRound(round) {
   return {
     type: ADD_ROUND,
+    isUndoable: true,
     round,
   };
 }
@@ -51,6 +53,7 @@ export function addRound(round) {
 export function changeName(playerID, name) {
   return {
     type: CHANGE_NAME,
+    isUndoable: true,
     playerID,
     name,
   };

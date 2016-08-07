@@ -1,4 +1,6 @@
-import { createSelector } from 'reselect';
+import {
+  createSelector,
+} from 'reselect';
 
 const selectLocationState = () => {
   let prevRoutingState;
@@ -18,13 +20,20 @@ const selectLocationState = () => {
 
 const selectGlobal = () => (state) => state.get('global');
 
+const selectHistory = () => createSelector(
+  selectGlobal(), globalState => ({
+    canUndo: globalState.past.length > 0,
+    canRedo: globalState.future.length > 0,
+  })
+);
+
 const selectPlayers = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('players')
+  selectGlobal(), (globalState) => globalState.present.get('players')
 );
 
 export {
   selectLocationState,
   selectGlobal,
   selectPlayers,
+  selectHistory,
 };
