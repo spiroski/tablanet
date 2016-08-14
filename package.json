@@ -184,8 +184,11 @@
     "react-tap-event-plugin": "^1.0.0",
     "redux": "3.5.2",
     "redux-immutable": "3.0.6",
+    "redux-localstorage": "^1.0.0-rc5",
+    "redux-localstorage-immutable": "^1.0.4",
     "redux-saga": "0.11.0",
     "redux-undo": "^1.0.0-beta9",
+    "redux-undo-immutable": "^0.2.0",
     "reselect": "2.5.3",
     "whatwg-fetch": "1.0.0"
   },

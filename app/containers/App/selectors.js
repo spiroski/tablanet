@@ -22,13 +22,13 @@ const selectGlobal = () => (state) => state.get('global');
 
 const selectHistory = () => createSelector(
   selectGlobal(), globalState => ({
-    canUndo: globalState.past.length > 0,
-    canRedo: globalState.future.length > 0,
+    canUndo: globalState.get('past').size > 0,
+    canRedo: globalState.get('future').size > 0,
   })
 );
 
 const selectPlayers = () => createSelector(
-  selectGlobal(), (globalState) => globalState.present.get('players')
+  selectGlobal(), (globalState) => globalState.get('present').get('players')
 );
 
 export {

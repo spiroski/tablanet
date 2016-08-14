@@ -11,7 +11,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { ActionCreators } from 'redux-undo';
+import { ActionCreators } from 'redux-undo-immutable';
 
 import TopAppBar from 'components/TopAppBar';
 import ScoreBoard from 'components/ScoreBoard';
