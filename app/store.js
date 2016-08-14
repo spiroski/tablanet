@@ -78,7 +78,10 @@ export default function configureStore(initialState = {}, history) {
   if (module.hot) {
     System.import('./reducers').then((reducerModule) => {
       const createReducers = reducerModule.default;
-      const nextReducers = createReducers(store.asyncReducers);
+      const nextReducers = compose(
+        mergePersistedState(deserialize)
+      )(createReducers(store.asyncReducers));
+      // const nextReducers = createReducers(store.asyncReducers);
 
       store.replaceReducer(nextReducers);
     });

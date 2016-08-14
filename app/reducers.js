@@ -49,7 +49,6 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     global: undoable(globalReducer, {
-      debug: true,
       filter: (action) => action.isUndoable === true,
     }),
     language: languageProviderReducer,
