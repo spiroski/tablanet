@@ -16,13 +16,10 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
-import persistState, {
-  mergePersistedState,
-} from 'redux-localstorage';
+import persistState from 'redux-localstorage';
 import adapter from 'redux-localstorage/lib/adapters/localStorage';
 import {
   serialize,
-  deserialize,
 } from 'redux-localstorage-immutable';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -40,9 +37,7 @@ export default function configureStore(initialState = {}, history) {
   ];
 
 
-  const reducer = compose(
-    mergePersistedState(deserialize)
-  )(createReducer());
+  const reducer = createReducer();
 
   const storageKey = 'redux-state';
 
@@ -78,10 +73,7 @@ export default function configureStore(initialState = {}, history) {
   if (module.hot) {
     System.import('./reducers').then((reducerModule) => {
       const createReducers = reducerModule.default;
-      const nextReducers = compose(
-        mergePersistedState(deserialize)
-      )(createReducers(store.asyncReducers));
-      // const nextReducers = createReducers(store.asyncReducers);
+      const nextReducers = createReducers(store.asyncReducers);
 
       store.replaceReducer(nextReducers);
     });
