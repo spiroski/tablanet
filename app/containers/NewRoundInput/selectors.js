@@ -38,9 +38,14 @@ const selectBonusPlayerID = () => createSelector(
 
 );
 
+const selectShown = () => createSelector(
+  selectNewRoundInput(), (substate) => substate.shown
+);
+
 export default selectNewRoundInput;
 export {
     selectNewRoundInputDomain,
     selectPlayers,
     selectBonusPlayerID,
+    selectShown,
 };

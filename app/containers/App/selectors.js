@@ -31,9 +31,22 @@ const selectPlayers = () => createSelector(
   selectGlobal(), (globalState) => globalState.get('present').get('players')
 );
 
+const selectTotals = () => createSelector(
+  selectPlayers(), (players) => players.map((player) => {
+    const rounds = player.get('rounds').reduce((round, total) => round + total, 0);
+    const marks = player.get('marks');
+    return {
+      rounds,
+      marks,
+      total: rounds + marks,
+    };
+  }).toJS()
+);
+
 export {
   selectLocationState,
   selectGlobal,
   selectPlayers,
   selectHistory,
+  selectTotals,
 };

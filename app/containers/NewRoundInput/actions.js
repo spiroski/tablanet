@@ -1,4 +1,6 @@
 import {
+    SHOW,
+    HIDE,
     ROUND_SCORE_CHANGE,
     BONUS_PLAYERID_CHANGE,
     RESET,
@@ -7,6 +9,18 @@ import {
 export function resetAction() {
   return {
     type: RESET,
+  };
+}
+
+export function showAction() {
+  return {
+    type: SHOW,
+  };
+}
+
+export function hideAction() {
+  return {
+    type: HIDE,
   };
 }
 

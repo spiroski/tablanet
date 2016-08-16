@@ -1,12 +1,17 @@
-.newRoundInput {
+.container {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   height: auto;
-  padding: 15px;
-  text-align: center;
+  text-align: right;
   z-index: 9999;
+}
+
+.newRoundInput {
+  padding: 15px;
+  color: red;
+  text-align: center;
 }
 
 .result {
@@ -19,4 +24,18 @@
   display: block;
   margin-bottom: 1px;
   width: 100%;
+}
+
+.hidden {
+  transition: height 5s ease-out;
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.column {
+  width: 50%;
+  display: inline-block;
+  box-sizing: border-box;
 }
