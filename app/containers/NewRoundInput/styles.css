@@ -27,11 +27,7 @@
 }
 
 .hidden {
-  transition: height 5s ease-out;
-  opacity: 0;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
+  display: none;
 }
 
 .column {

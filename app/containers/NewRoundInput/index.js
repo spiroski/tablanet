@@ -22,6 +22,8 @@ import BonusPlayerIDChooser from 'components/BonusPlayerIDChooser';
 import Total from 'components/Total';
 
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+
 import Paper from 'material-ui/Paper';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
@@ -53,17 +55,24 @@ export class NewRoundInput extends React.Component { // eslint-disable-line reac
     const shown = this.props.shown;
     return (
       <div className={styles.container}>
-        <FloatingActionButton secondary style={{ margin: '15px' }} onClick={this.props.onShow} disabled={shown}>
-          <ContentAdd />
+        <FloatingActionButton
+          secondary={!shown}
+          primary={shown}
+          style={{ margin: '15px' }}
+          onClick={shown ? this.props.onHide : this.props.onShow}
+        >
+          {shown ? <NavigationClose /> : <ContentAdd />}
         </FloatingActionButton>
-        <div>
-          <div className={styles.column}>
-            <Total rounds={this.props.totals[0].rounds} marks={this.props.totals[0].marks} />
+        {shown ? '' :
+          <div>
+            <div className={styles.column}>
+              <Total rounds={this.props.totals[0].rounds} marks={this.props.totals[0].marks} />
+            </div>
+            <div className={styles.column}>
+              <Total rounds={this.props.totals[1].rounds} marks={this.props.totals[1].marks} />
+            </div>
           </div>
-          <div className={styles.column}>
-            <Total rounds={this.props.totals[1].rounds} marks={this.props.totals[1].marks} />
-          </div>
-        </div>
+        }
         <Paper className={shown ? styles.newRoundInput : [styles.newRoundInput, styles.hidden].join(' ')}>
           <form onSubmit={this.onAdd}>
             <div className={styles.resultContainer}>
